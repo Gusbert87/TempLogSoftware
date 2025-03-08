@@ -224,38 +224,38 @@ namespace View.Forms
 
         private string showSaveFileDialog()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Comma separated value|*.csv";
-            saveFileDialog.Title = "Salva il file di log";
-            saveFileDialog.ShowDialog();
-            string fileName = saveFileDialog.FileName;
-            saveFileDialog.Dispose();
-            return fileName;
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {    
+                saveFileDialog.Filter = "Comma separated value|*.csv";
+                saveFileDialog.Title = "Salva il file di log";
+                saveFileDialog.ShowDialog();
+                string fileName = saveFileDialog.FileName;
+                return fileName;
+            }
         }
 
         private string showLoadFileDialog()
         {
-            OpenFileDialog loadFileDialog = new OpenFileDialog();
-            loadFileDialog.Filter = "Comma separated value|*.csv";
-            loadFileDialog.Title = "Carica un file di log";
-            loadFileDialog.ShowDialog();
-            string fileName = loadFileDialog.FileName;
-            loadFileDialog.Dispose();
-            return fileName;
+            using (OpenFileDialog loadFileDialog = new OpenFileDialog())
+            {    
+                loadFileDialog.Filter = "Comma separated value|*.csv";
+                loadFileDialog.Title = "Carica un file di log";
+                loadFileDialog.ShowDialog();
+                string fileName = loadFileDialog.FileName;
+                return fileName;
+            }
         }
 
         private void mnuImpostazioniClick(object sender, EventArgs e)
         {
-            SettingsForm settingsForm = new SettingsForm();
-            settingsForm.ShowDialog();
-            settingsForm.Dispose();
+            using (SettingsForm settingsForm = new SettingsForm())
+                settingsForm.ShowDialog();
         }
 
         private void mnuTaratureClick(object sender, EventArgs e)
         {
-            CalibrationForm calibrationForm = new CalibrationForm();
-            calibrationForm.ShowDialog();
-            calibrationForm.Dispose();
+            using (CalibrationForm calibrationForm = new CalibrationForm())
+                calibrationForm.ShowDialog();
 
         }
 
